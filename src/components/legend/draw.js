@@ -96,7 +96,21 @@ module.exports = function draw(gd, opts) {
     });
 
     var groups = scrollBox.selectAll('g.groups').data(legendData);
-    groups.enter().append('g').attr('class', 'groups');
+    groups.enter().append('g').attr('class', 'groups')
+            .each(function(e) {
+                var thisLabel = d3.select(this)
+                    .append('text')
+                    .attr('class', 'grouptitle')
+                    .attr('text-anchor', 'start');
+
+                var d = e[0][0].trace.legendgrouptitle;
+                var font = d.font || {};
+                thisLabel
+                    .call(svgTextUtils.positionText, 0, 0)
+                    .call(Drawing.font, font.family, font.size, font.color)
+                    .text(d.text)
+                    .call(svgTextUtils.convertToTspans, gd);
+            });
     groups.exit().remove();
 
     var traces = groups.selectAll('g.traces').data(Lib.identity);
@@ -386,7 +400,6 @@ function drawTexts(g, gd, opts) {
     var legendItem = g.data()[0][0];
     var trace = legendItem.trace;
     var isPieLike = Registry.traceIs(trace, 'pie-like');
-    var traceIndex = trace.index;
     var isEditable = !opts._inHover && gd._context.edits.legendText && !isPieLike;
     var maxNameLength = opts._maxNameLength;
 
@@ -432,7 +445,7 @@ function drawTexts(g, gd, opts) {
                     update.name = newName;
                 }
 
-                return Registry.call('_guiRestyle', gd, update, traceIndex);
+                return Registry.call('_guiRestyle', gd, update, trace.index);
             });
     } else {
         textLayout(textEl, g, gd, opts);
@@ -627,10 +640,21 @@ function computeLegendDimensions(gd, groups, traces, opts) {
         opts._height += endPad;
 
         if(isGrouped) {
-            groups.each(function(d, i) {
-                Drawing.setTranslate(this, 0, i * opts.tracegroupgap);
+            var y = 0;
+            groups.each(function() {
+                var groupTitle = d3.select(this).selectAll('.grouptitle');
+                groupTitle.each(function(e) {
+                    Drawing.setTranslate(this, 0, y);
+
+                    var font = e[0][0].trace.legendgrouptitle.font;
+                    if(font) y += font.size;
+                });
+
+                Drawing.setTranslate(this, 0, y);
+
+                y += opts.tracegroupgap;
             });
-            opts._height += (opts._lgroupsLength - 1) * opts.tracegroupgap;
+            opts._height += y;
         }
     } else {
         var xanchor = getXanchor(opts);
