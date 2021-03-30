@@ -22,6 +22,9 @@ var getLegendData = require('./get_legend_data');
 var style = require('./style');
 var helpers = require('./helpers');
 
+var MAIN_TITLE = 1;
+var GROUP_TITLE = 2;
+
 module.exports = function draw(gd, opts) {
     var fullLayout = gd._fullLayout;
     var clipId = 'legend' + fullLayout._uid;
@@ -85,7 +88,7 @@ module.exports = function draw(gd, opts) {
             .call(Drawing.font, title.font)
             .text(title.text);
 
-        textLayout(titleEl, scrollBox, gd, opts, true); // handle mathjax or multi-line text and compute title height
+        textLayout(titleEl, scrollBox, gd, opts, MAIN_TITLE); // handle mathjax or multi-line text and compute title height
     } else {
         scrollBox.selectAll('.legendtitletext').remove();
     }
@@ -96,7 +99,21 @@ module.exports = function draw(gd, opts) {
     });
 
     var groups = scrollBox.selectAll('g.groups').data(legendData);
-    groups.enter().append('g').attr('class', 'groups');
+    groups.enter().append('g').attr('class', 'groups')
+    .each(function(e) {
+        var groupTitleEl = d3.select(this)
+            .append('text')
+            .attr('class', 'grouptitle')
+            .attr('text-anchor', 'start');
+
+        var d = e[0][0].trace.legendgrouptitle;
+        var font = d.font || {};
+        groupTitleEl
+            .call(Drawing.font, font.family, font.size, font.color)
+            .text(d.text);
+
+        textLayout(groupTitleEl, scrollBox, gd, opts, GROUP_TITLE); // handle mathjax or multi-line text and compute grouptitle heights
+    });
     groups.exit().remove();
 
     var traces = groups.selectAll('g.traces').data(Lib.identity);
@@ -508,7 +525,9 @@ function computeTextDimensions(g, gd, opts, isTitle) {
     var mathjaxNode = mathjaxGroup.node();
     if(!opts) opts = gd._fullLayout.legend;
     var bw = opts.borderwidth;
-    var lineHeight = (isTitle ? opts.title : opts).font.size * LINE_SPACING;
+    var lineHeight = (
+        isTitle === MAIN_TITLE ? opts.title : opts
+    ).font.size * LINE_SPACING;
     var height, width;
 
     if(mathjaxNode) {
