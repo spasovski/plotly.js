@@ -85,7 +85,7 @@ module.exports = function draw(gd, opts) {
             .call(Drawing.font, title.font)
             .text(title.text);
 
-        textLayout(titleEl, scrollBox, gd, opts); // handle mathjax or multi-line text and compute title height
+        textLayout(titleEl, scrollBox, gd, opts, true); // handle mathjax or multi-line text and compute title height
     } else {
         scrollBox.selectAll('.legendtitletext').remove();
     }
@@ -386,7 +386,6 @@ function drawTexts(g, gd, opts) {
     var legendItem = g.data()[0][0];
     var trace = legendItem.trace;
     var isPieLike = Registry.traceIs(trace, 'pie-like');
-    var traceIndex = trace.index;
     var isEditable = !opts._inHover && gd._context.edits.legendText && !isPieLike;
     var maxNameLength = opts._maxNameLength;
 
@@ -432,7 +431,7 @@ function drawTexts(g, gd, opts) {
                     update.name = newName;
                 }
 
-                return Registry.call('_guiRestyle', gd, update, traceIndex);
+                return Registry.call('_guiRestyle', gd, update, trace.index);
             });
     } else {
         textLayout(textEl, g, gd, opts);
@@ -491,14 +490,14 @@ function setupTraceToggle(g, gd) {
     });
 }
 
-function textLayout(s, g, gd, opts) {
+function textLayout(s, g, gd, opts, isTitle) {
     if(opts._inHover) s.attr('data-notex', true); // do not process MathJax for unified hover
     svgTextUtils.convertToTspans(s, gd, function() {
-        computeTextDimensions(g, gd, opts);
+        computeTextDimensions(g, gd, opts, isTitle);
     });
 }
 
-function computeTextDimensions(g, gd, opts) {
+function computeTextDimensions(g, gd, opts, isTitle) {
     var legendItem = g.data()[0][0];
     if(!opts._inHover && legendItem && !legendItem.trace.showlegend) {
         g.remove();
@@ -509,7 +508,7 @@ function computeTextDimensions(g, gd, opts) {
     var mathjaxNode = mathjaxGroup.node();
     if(!opts) opts = gd._fullLayout.legend;
     var bw = opts.borderwidth;
-    var lineHeight = (legendItem ? opts : opts.title).font.size * LINE_SPACING;
+    var lineHeight = (isTitle ? opts.title : opts).font.size * LINE_SPACING;
     var height, width;
 
     if(mathjaxNode) {
@@ -518,14 +517,14 @@ function computeTextDimensions(g, gd, opts) {
         height = mathjaxBB.height;
         width = mathjaxBB.width;
 
-        if(legendItem) {
-            Drawing.setTranslate(mathjaxGroup, 0, height * 0.25);
-        } else { // case of title
+        if(isTitle) {
             Drawing.setTranslate(mathjaxGroup, bw, height * 0.75 + bw);
+        } else { // legend item
+            Drawing.setTranslate(mathjaxGroup, 0, height * 0.25);
         }
     } else {
-        var textEl = g.select(legendItem ?
-            '.legendtext' : '.legendtitletext'
+        var textEl = g.select(isTitle ?
+            '.legendtitletext' : '.legendtext'
         );
         var textLines = svgTextUtils.lineCount(textEl);
         var textNode = textEl.node();
@@ -536,21 +535,21 @@ function computeTextDimensions(g, gd, opts) {
         // approximation to height offset to center the font
         // to avoid getBoundingClientRect
         var textY = lineHeight * ((textLines - 1) / 2 - 0.3);
-        if(legendItem) {
+        if(isTitle) {
+            svgTextUtils.positionText(textEl, constants.titlePad + bw, lineHeight + bw);
+        } else { // legend item
             var textGap = opts.itemwidth + constants.itemGap * 2;
             svgTextUtils.positionText(textEl, textGap, -textY);
-        } else { // case of title
-            svgTextUtils.positionText(textEl, constants.titlePad + bw, lineHeight + bw);
         }
     }
 
-    if(legendItem) {
+    if(isTitle) {
+        opts._titleWidth = width;
+        opts._titleHeight = height;
+    } else { // legend item
         legendItem.lineHeight = lineHeight;
         legendItem.height = Math.max(height, 16) + 3;
         legendItem.width = width;
-    } else { // case of title
-        opts._titleWidth = width;
-        opts._titleHeight = height;
     }
 }
 
@@ -599,6 +598,8 @@ function computeLegendDimensions(gd, groups, traces, opts) {
     var isBelowPlotArea = opts.y < 0 || (opts.y === 0 && yanchor === 'top');
     var isAbovePlotArea = opts.y > 1 || (opts.y === 1 && yanchor === 'bottom');
 
+    var traceGroupGap = opts.tracegroupgap;
+
     // - if below/above plot area, give it the maximum potential margin-push value
     // - otherwise, extend the height of the plot area
     opts._maxHeight = Math.max(
@@ -627,10 +628,12 @@ function computeLegendDimensions(gd, groups, traces, opts) {
         opts._height += endPad;
 
         if(isGrouped) {
-            groups.each(function(d, i) {
-                Drawing.setTranslate(this, 0, i * opts.tracegroupgap);
+            var y = -traceGroupGap;
+            groups.each(function() {
+                y += traceGroupGap;
+                Drawing.setTranslate(this, 0, y);
             });
-            opts._height += (opts._lgroupsLength - 1) * opts.tracegroupgap;
+            opts._height += y;
         }
     } else {
         var xanchor = getXanchor(opts);
@@ -681,7 +684,7 @@ function computeLegendDimensions(gd, groups, traces, opts) {
                 if((next + bw + groupOffsetX) > opts._maxWidth) {
                     maxRowWidth = Math.max(maxRowWidth, groupOffsetX);
                     groupOffsetX = 0;
-                    groupOffsetY += maxGroupHeightInRow + opts.tracegroupgap;
+                    groupOffsetY += maxGroupHeightInRow + traceGroupGap;
                     maxGroupHeightInRow = offsetY;
                 }
 
