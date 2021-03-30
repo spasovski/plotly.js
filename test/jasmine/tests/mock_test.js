@@ -705,6 +705,7 @@ var list = [
     'legendgroup_bar-stack',
     'legendgroup_horizontal_bg_fit',
     'legendgroup_horizontal_wrapping',
+    'legendgroup-titles',
     'line_grid_color',
     'line_grid_width',
     'line_scatter',
@@ -1794,6 +1795,7 @@ figs['legendgroup'] = require('@mocks/legendgroup');
 figs['legendgroup_bar-stack'] = require('@mocks/legendgroup_bar-stack');
 figs['legendgroup_horizontal_bg_fit'] = require('@mocks/legendgroup_horizontal_bg_fit');
 figs['legendgroup_horizontal_wrapping'] = require('@mocks/legendgroup_horizontal_wrapping');
+figs['legendgroup-titles'] = require('@mocks/legendgroup-titles');
 figs['line_grid_color'] = require('@mocks/line_grid_color');
 figs['line_grid_width'] = require('@mocks/line_grid_width');
 figs['line_scatter'] = require('@mocks/line_scatter');
