@@ -82,8 +82,6 @@ module.exports = function draw(gd, opts) {
     var title = opts.title;
     opts._titleWidth = 0;
     opts._titleHeight = 0;
-    opts._groupTitleWidth = [];
-    opts._groupTitleHeight = [];
     if(title.text) {
         var titleEl = Lib.ensureSingle(scrollBox, 'text', 'legendtitletext');
         titleEl.attr('text-anchor', 'start')
@@ -556,11 +554,11 @@ function computeTextDimensions(g, gd, opts, aTitle) {
 
         // approximation to height offset to center the font
         // to avoid getBoundingClientRect
-        var textY = lineHeight * ((textLines - 1) / 2 - 0.3);
         if(aTitle) {
             svgTextUtils.positionText(textEl, constants.titlePad + bw, lineHeight + bw);
         } else { // legend item
             var textGap = opts.itemwidth + constants.itemGap * 2;
+            var textY = lineHeight * ((textLines - 1) / 2 - 0.3);
             svgTextUtils.positionText(textEl, textGap, -textY);
         }
     }
@@ -569,8 +567,7 @@ function computeTextDimensions(g, gd, opts, aTitle) {
         opts._titleWidth = width;
         opts._titleHeight = height;
     } else if(aTitle === GROUP_TITLE) {
-        opts._groupTitleWidth.push(width);
-        opts._groupTitleHeight.push(height);
+
     } else { // legend item
         legendItem.lineHeight = lineHeight;
         legendItem.height = Math.max(height, 16) + 3;
