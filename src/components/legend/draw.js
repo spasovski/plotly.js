@@ -82,6 +82,8 @@ module.exports = function draw(gd, opts) {
     var title = opts.title;
     opts._titleWidth = 0;
     opts._titleHeight = 0;
+    opts._groupTitleWidth = [];
+    opts._groupTitleHeight = [];
     if(title.text) {
         var titleEl = Lib.ensureSingle(scrollBox, 'text', 'legendtitletext');
         titleEl.attr('text-anchor', 'start')
@@ -103,7 +105,7 @@ module.exports = function draw(gd, opts) {
     .each(function(e) {
         var groupTitleEl = d3.select(this)
             .append('text')
-            .attr('class', 'grouptitle')
+            .attr('class', 'legendgrouptitletext')
             .attr('text-anchor', 'start');
 
         var d = e[0][0].trace.legendgrouptitle;
@@ -507,14 +509,14 @@ function setupTraceToggle(g, gd) {
     });
 }
 
-function textLayout(s, g, gd, opts, isTitle) {
+function textLayout(s, g, gd, opts, aTitle) {
     if(opts._inHover) s.attr('data-notex', true); // do not process MathJax for unified hover
     svgTextUtils.convertToTspans(s, gd, function() {
-        computeTextDimensions(g, gd, opts, isTitle);
+        computeTextDimensions(g, gd, opts, aTitle);
     });
 }
 
-function computeTextDimensions(g, gd, opts, isTitle) {
+function computeTextDimensions(g, gd, opts, aTitle) {
     var legendItem = g.data()[0][0];
     if(!opts._inHover && legendItem && !legendItem.trace.showlegend) {
         g.remove();
@@ -526,7 +528,7 @@ function computeTextDimensions(g, gd, opts, isTitle) {
     if(!opts) opts = gd._fullLayout.legend;
     var bw = opts.borderwidth;
     var lineHeight = (
-        isTitle === MAIN_TITLE ? opts.title : opts
+        aTitle === MAIN_TITLE ? opts.title : opts
     ).font.size * LINE_SPACING;
     var height, width;
 
@@ -536,14 +538,15 @@ function computeTextDimensions(g, gd, opts, isTitle) {
         height = mathjaxBB.height;
         width = mathjaxBB.width;
 
-        if(isTitle) {
+        if(aTitle) {
             Drawing.setTranslate(mathjaxGroup, bw, height * 0.75 + bw);
         } else { // legend item
             Drawing.setTranslate(mathjaxGroup, 0, height * 0.25);
         }
     } else {
-        var textEl = g.select(isTitle ?
-            '.legendtitletext' : '.legendtext'
+        var textEl = g.select(
+            aTitle === MAIN_TITLE ? '.legendtitletext' :
+            aTitle === GROUP_TITLE ? '.legendgrouptitletext' : '.legendtext'
         );
         var textLines = svgTextUtils.lineCount(textEl);
         var textNode = textEl.node();
@@ -554,7 +557,7 @@ function computeTextDimensions(g, gd, opts, isTitle) {
         // approximation to height offset to center the font
         // to avoid getBoundingClientRect
         var textY = lineHeight * ((textLines - 1) / 2 - 0.3);
-        if(isTitle) {
+        if(aTitle) {
             svgTextUtils.positionText(textEl, constants.titlePad + bw, lineHeight + bw);
         } else { // legend item
             var textGap = opts.itemwidth + constants.itemGap * 2;
@@ -562,9 +565,12 @@ function computeTextDimensions(g, gd, opts, isTitle) {
         }
     }
 
-    if(isTitle) {
+    if(aTitle === MAIN_TITLE) {
         opts._titleWidth = width;
         opts._titleHeight = height;
+    } else if(aTitle === GROUP_TITLE) {
+        opts._groupTitleWidth.push(width);
+        opts._groupTitleHeight.push(height);
     } else { // legend item
         legendItem.lineHeight = lineHeight;
         legendItem.height = Math.max(height, 16) + 3;
