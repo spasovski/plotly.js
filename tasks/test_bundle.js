@@ -20,6 +20,7 @@ glob(pathToJasmineBundleTests + '/*.js', function(err, files) {
                 'karma', 'start',
                 path.join(constants.pathToRoot, 'test', 'jasmine', 'karma.conf.js'),
                 '--bundleTest=' + path.basename(file),
+                '--FF',
                 '--nowatch'
             ].join(' ');
 
