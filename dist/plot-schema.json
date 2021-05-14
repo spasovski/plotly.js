@@ -396,7 +396,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -2562,7 +2562,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -2705,10 +2705,10 @@
                         "auto",
                         "none"
                     ],
-                    "dflt": "none",
+                    "dflt": "auto",
                     "arrayOk": true,
                     "editType": "calc",
-                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside."
+                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside. If *none*, no text appears."
                 },
                 "insidetextanchor": {
                     "valType": "enumerated",
@@ -4274,7 +4274,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -5539,7 +5539,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -6636,7 +6636,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -8173,7 +8173,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -9227,7 +9227,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -10424,7 +10424,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -11642,7 +11642,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -13445,7 +13445,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -14602,7 +14602,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -14780,7 +14780,7 @@
                     "dflt": "auto",
                     "arrayOk": true,
                     "editType": "calc",
-                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside."
+                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside. If *none*, no text appears."
                 },
                 "insidetextanchor": {
                     "valType": "enumerated",
@@ -15964,7 +15964,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -16151,10 +16151,10 @@
                         "auto",
                         "none"
                     ],
-                    "dflt": "none",
+                    "dflt": "auto",
                     "arrayOk": true,
                     "editType": "calc",
-                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside."
+                    "description": "Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside. If *none*, no text appears."
                 },
                 "insidetextanchor": {
                     "valType": "enumerated",
@@ -17161,7 +17161,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -17922,7 +17922,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -19095,7 +19095,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -20428,7 +20428,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -21067,7 +21067,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -30172,7 +30172,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -31917,7 +31917,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -32882,7 +32882,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -34925,7 +34925,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -36915,7 +36915,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -37687,7 +37687,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -38645,7 +38645,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -39675,7 +39675,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -40760,7 +40760,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -41692,7 +41692,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -43283,7 +43283,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -46067,7 +46067,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -48730,7 +48730,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -49230,7 +49230,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -49802,7 +49802,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -51605,7 +51605,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -53349,7 +53349,7 @@
                     "items": {
                         "transform": {
                             "editType": "calc",
-                            "description": "An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
+                            "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. An array of operations that manipulate the trace data, for example filtering or sorting the data arrays.",
                             "role": "object"
                         }
                     },
@@ -54922,8 +54922,9 @@
                     "x unified",
                     "y unified"
                 ],
+                "dflt": "closest",
                 "editType": "modebar",
-                "description": "Determines the mode of hover interactions. If *closest*, a single hoverlabel will appear for the *closest* point within the `hoverdistance`. If *x* (or *y*), multiple hoverlabels will appear for multiple points at the *closest* x- (or y-) coordinate within the `hoverdistance`, with the caveat that no more than one hoverlabel will appear per trace. If *x unified* (or *y unified*), a single hoverlabel will appear multiple points at the closest x- (or y-) coordinate within the `hoverdistance` with the caveat that no more than one hoverlabel will appear per trace. In this mode, spikelines are enabled by default perpendicular to the specified axis. If false, hover interactions are disabled. If `clickmode` includes the *select* flag, `hovermode` defaults to *closest*. If `clickmode` lacks the *select* flag, it defaults to *x* or *y* (depending on the trace's `orientation` value) for plots based on cartesian coordinates. For anything else the default value is *closest*."
+                "description": "Determines the mode of hover interactions. If *closest*, a single hoverlabel will appear for the *closest* point within the `hoverdistance`. If *x* (or *y*), multiple hoverlabels will appear for multiple points at the *closest* x- (or y-) coordinate within the `hoverdistance`, with the caveat that no more than one hoverlabel will appear per trace. If *x unified* (or *y unified*), a single hoverlabel will appear multiple points at the closest x- (or y-) coordinate within the `hoverdistance` with the caveat that no more than one hoverlabel will appear per trace. In this mode, spikelines are enabled by default perpendicular to the specified axis. If false, hover interactions are disabled."
             },
             "hoverdistance": {
                 "valType": "integer",
@@ -54935,7 +54936,7 @@
             "spikedistance": {
                 "valType": "integer",
                 "min": -1,
-                "dflt": 20,
+                "dflt": -1,
                 "editType": "none",
                 "description": "Sets the default distance (in pixels) to look for data to draw spikelines to (-1 means no cutoff, 0 means no looking for data). As with hoverdistance, distance does not apply to area-like objects. In addition, some objects can be hovered on but will not generate spikelines, such as scatter fills."
             },
@@ -55637,7 +55638,7 @@
                         "cursor",
                         "hovered data"
                     ],
-                    "dflt": "data",
+                    "dflt": "hovered data",
                     "editType": "none",
                     "description": "Determines whether spikelines are stuck to the cursor or to the closest datapoints."
                 },
@@ -56748,7 +56749,7 @@
                         "cursor",
                         "hovered data"
                     ],
-                    "dflt": "data",
+                    "dflt": "hovered data",
                     "editType": "none",
                     "description": "Determines whether spikelines are stuck to the cursor or to the closest datapoints."
                 },
@@ -62637,7 +62638,7 @@
                             "editType": "legend"
                         },
                         "editType": "legend",
-                        "description": "Sets this legend's title font.",
+                        "description": "Sets this legend's title font. Defaults to `legend.font` with its size increased about 20%.",
                         "role": "object"
                     },
                     "side": {
@@ -64753,7 +64754,7 @@
                     ],
                     "editType": "calc",
                     "dflt": "gregorian",
-                    "description": "Sets the calendar system to use for `value`, if it is a date."
+                    "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. Sets the calendar system to use for `value`, if it is a date."
                 },
                 "targetcalendar": {
                     "valType": "enumerated",
@@ -64777,7 +64778,7 @@
                     ],
                     "editType": "calc",
                     "dflt": "gregorian",
-                    "description": "Sets the calendar system to use for `target`, if it is an array of dates. If `target` is a string (eg *x*) we use the corresponding trace attribute (eg `xcalendar`) if it exists, even if `targetcalendar` is provided."
+                    "description": "WARNING: All transforms are deprecated and may be removed from the API in next major version. Sets the calendar system to use for `target`, if it is an array of dates. If `target` is a string (eg *x*) we use the corresponding trace attribute (eg `xcalendar`) if it exists, even if `targetcalendar` is provided."
                 },
                 "targetsrc": {
                     "valType": "string",
@@ -65193,7 +65194,7 @@
         "modeBarButtonsToAdd": {
             "valType": "any",
             "dflt": [],
-            "description": "Add mode bar button using config objects See ./components/modebar/buttons.js for list of arguments."
+            "description": "Add mode bar button using config objects See ./components/modebar/buttons.js for list of arguments. To enable predefined modebar buttons e.g. shape drawing, hover and spikelines, simply provide their string name(s). This could include: *v1hovermode*, *hoverclosest*, *hovercompare*, *togglehover*, *togglespikelines*, *drawline*, *drawopenpath*, *drawclosedpath*, *drawcircle*, *drawrect* and *eraseshape*. Please note that these predefined buttons will only be shown if they are compatible with all trace types used in a graph."
         },
         "modeBarButtons": {
             "valType": "any",
